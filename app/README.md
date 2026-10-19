@@ -214,3 +214,11 @@ The sidebar foot says `Saved` when your work is on disk.
 
 Realtime sharing, mobile layout, and version history beyond undo. See
 [DESIGN.md](DESIGN.md) for the shape of the code and what each decision was for.
+
+## Licence
+
+MIT, see [LICENSE](../LICENSE) at the root of the repository. Use it, change
+it, ship it, sell it; just keep the copyright notice.
+
+The separate `packaging/EULA.txt` applies only to the prebuilt installers
+distributed from martinworks.org. Build from source and MIT is what binds you.
