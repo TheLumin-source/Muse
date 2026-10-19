@@ -1,0 +1,42 @@
+fastapi>=0.110
+uvicorn>=0.27
+python-multipart>=0.0.9
+httpx>=0.27
+pillow>=10.0
+pygments>=2.17
+pymupdf>=1.24
+pywebview>=5.0
+pystray>=0.19
+# Pinned, not incidental: see the venv note below.
+websockets>=14
+
+# --- Linux notes -------------------------------------------------------------
+# pywebview has no bundled engine on Linux; it renders through the system
+# WebKitGTK, which pip cannot install. On Arch:
+#
+#   sudo pacman -S webkit2gtk-4.1 python-gobject gtk3
+#
+# On Debian, Ubuntu and Mint:
+#
+#   sudo apt install gir1.2-webkit2-4.1 python3-gi gir1.2-gtk-3.0
+#
+# Because PyGObject comes from the distro rather than pip, the venv has to be
+# built with --system-site-packages:
+#
+#   python3 -m venv --system-site-packages .venv
+#   .venv/bin/pip install -r requirements.txt
+#
+# That is also why websockets is pinned above. A system-site-packages venv can
+# see the distro's older copy, and uvicorn then dies on import with
+# "cannot import name 'ServerProtocol' from 'websockets.server'" before it ever
+# serves a request. Installing a current one into the venv shadows it.
+#
+# Optional, and only for features that shell out:
+#   xdg-utils        reveal a file in the file manager (xdg-open)
+#   wl-clipboard     copy a file to the clipboard on Wayland (wl-copy)
+#   xclip            the same on X11
+#   fontconfig       font lookup for PDF and PNG board export (fc-match)
+#
+# Each of those degrades quietly to a no-op when missing; nothing crashes.
+# pystray is imported only by quick capture, which is Windows-only, so it is
+# unused on Linux.

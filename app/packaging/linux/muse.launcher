@@ -1,0 +1,38 @@
+#!/bin/sh
+# Muse, installed by the muse-board package. Installed at /usr/bin/muse-board.
+# Named muse-board because Ubuntu already ships a package and a binary called
+# muse: the MusE audio/MIDI sequencer. Sharing the name let apt upgrade this
+# app away and replace it with the sequencer.
+#
+#   muse-board                    desktop window
+#   muse-board --browser          open in the default browser instead
+#   muse-board --serve            server only, no window
+#
+# vendor goes on PYTHONPATH ahead of the distro's own modules on purpose. The
+# package carries current copies of everything pip-only, and at least one of
+# them matters: a distro websockets older than 14 makes uvicorn die on import
+# with "cannot import name 'ServerProtocol'" before it serves a request.
+# PYTHONPATH is searched before site-packages, so the bundled copy wins.
+set -eu
+
+# MUSE_APP_DIR exists so the package can be smoke-tested from an unpacked tree
+# before it is installed, and so anyone who wants it somewhere other than
+# /usr/lib can have it. Normal launches never set it.
+APP="${MUSE_APP_DIR:-/usr/lib/muse-board}"
+
+# WebKitGTK 2.42 and newer render through a DMA-BUF path that the Nvidia
+# proprietary driver does not support, and the symptom is not an error: the
+# window opens and stays blank or draws garbage. Turning that path off costs
+# some GPU compositing and costs nothing on hardware that was working anyway,
+# so only Nvidia gets it. /proc/driver/nvidia/version exists for the
+# proprietary module and not for nouveau, which does not need this. An
+# already-set value is left alone so anyone debugging can override it.
+if [ -e /proc/driver/nvidia/version ] && [ -z "${WEBKIT_DISABLE_DMABUF_RENDERER:-}" ]; then
+    WEBKIT_DISABLE_DMABUF_RENDERER=1
+    export WEBKIT_DISABLE_DMABUF_RENDERER
+fi
+
+PYTHONPATH="$APP/vendor${PYTHONPATH:+:$PYTHONPATH}"
+export PYTHONPATH
+
+exec python3 "$APP/run.py" "$@"

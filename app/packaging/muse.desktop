@@ -1,0 +1,17 @@
+[Desktop Entry]
+# Template. @INSTALL_DIR@ is substituted by `./muse.sh --install-desktop`,
+# which writes the resolved copy to ~/.local/share/applications/muse.desktop.
+Type=Application
+Version=1.0
+Name=Muse
+GenericName=Visual Board
+Comment=A local visual board for notes, images and files
+Exec=@INSTALL_DIR@/muse.sh
+Icon=@INSTALL_DIR@/muse.png
+Terminal=false
+Categories=Graphics;Office;Utility;
+Keywords=board;notes;canvas;moodboard;
+StartupNotify=true
+# Matches the pywebview window so the taskbar groups it under this entry and
+# picks up the icon above, rather than showing a generic Python one.
+StartupWMClass=Muse

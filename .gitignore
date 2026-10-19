@@ -1,0 +1,25 @@
+# Claude's own files never go in a repo
+CLAUDE.md
+.claude/
+
+# Martin's boards, not the app's. In dev these sit beside the code; in an
+# install they live in Documents/Muse. Either way they are data, not source.
+Projects/
+Backups/
+Exports/
+Trash/
+settings.json
+.webview/
+
+# Build output and the local environment
+out/
+app/build/
+app/dist/
+app/.venv/
+__pycache__/
+*.py[cod]
+
+# Editors and OS litter
+.DS_Store
+Thumbs.db
+*.swp
