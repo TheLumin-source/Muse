@@ -217,8 +217,14 @@ Realtime sharing, mobile layout, and version history beyond undo. See
 
 ## Licence
 
-MIT, see [LICENSE](../LICENSE) at the root of the repository. Use it, change
-it, ship it, sell it; just keep the copyright notice.
+[PolyForm Noncommercial License 1.0.0](../LICENSE). Use it, change it, share
+it, for any noncommercial purpose: personal work, hobby projects, study,
+charities, schools, public research and government all count. Selling it, or
+using it commercially, is not granted here and needs a separate agreement.
+
+This is source-available rather than open source in the OSI sense, because
+that definition requires permitting commercial use. The practical effect for
+anyone not selling software is the same.
 
 The separate `packaging/EULA.txt` applies only to the prebuilt installers
-distributed from martinworks.org. Build from source and MIT is what binds you.
+distributed from martinworks.org.

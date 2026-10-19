@@ -2,10 +2,11 @@ MUSE END USER LICENSE AGREEMENT
 
 SCOPE: this agreement covers the installers and prebuilt binaries distributed
 from martinworks.org. It does not govern the Muse source code. The source is
-published at https://github.com/TheLumin-source/Muse under the MIT License,
-and the LICENSE file at the root of that repository is what applies to it. If
-you build Muse yourself from source, the MIT License is your licence, not this
-one.
+published at https://github.com/TheLumin-source/Muse under the PolyForm
+Noncommercial License 1.0.0, and the LICENSE file at the root of that
+repository is what applies to it. If you build Muse yourself from source for a
+noncommercial purpose, that licence is yours, not this one. Commercial use of
+Muse, in source or binary form, requires a separate agreement with me.
 
 Copyright (c) 2026 Martin De Lange (trading as MartinWorks).
 
