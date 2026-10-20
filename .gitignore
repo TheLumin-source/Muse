@@ -23,3 +23,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 *.swp
+
+# Storefront copy, not source. Stays on disk, out of the repo.
+STORE-LISTING.md
